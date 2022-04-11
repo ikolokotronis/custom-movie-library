@@ -18,12 +18,16 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "framer-motion": "^6.2.9",
+    "proptypes": "1.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "7.2.1",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "react-redux": "7.2.1",
-    "proptypes": "1.1.0",
     "redux-thunk": "2.3.0"
   }
 }
