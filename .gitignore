@@ -6,6 +6,7 @@ es
 temp/
 react-redux-*/
 .vscode/
+package-lock.json
 
 .cache/
 .yarn/cache/
@@ -31,5 +32,3 @@ website/translated_docs
 website/build/
 website/node_modules
 website/i18n/*
-
-.idea/
