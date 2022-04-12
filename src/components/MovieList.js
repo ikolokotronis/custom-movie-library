@@ -1,13 +1,62 @@
 import React from 'react';
-import {Box, HStack} from "@chakra-ui/react";
+import {Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Text} from "@chakra-ui/react";
+import { MdStarRate, MdFavorite, MdWatchLater } from "react-icons/md";
 
 export function MovieList() {
     return (
-        <HStack>
-            <Box border={'1px'} borderRadius={'5'} p={'5'} borderColor={'gray.300'}>
-                <img src={'https://picsum.photos/150/150'} alt={'poster'}/>
-
+        <SimpleGrid columns={3}>
+            <Box maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                <img src={'https://picsum.photos/200/200'} alt={'poster'}/>
+                <Text fontWeight={'bold'}>Title</Text>
+                <Text fontSize='sm'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab amet atque autem consectetur ea esse impedit inventore ipsam, itaque laudantium modi neque nulla provident quas quibusdam veniam vitae voluptatum.</Text>
+                <Flex>
+                    <HStack>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                    </HStack>
+                    <Spacer/>
+                        <IconButton variant={'filled'} color={'red.500'} aria-label={'favorite'} icon={<MdFavorite/>}/>
+                        <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>} />
+                </Flex>
             </Box>
-        </HStack>
+            <Box maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                <img src={'https://picsum.photos/200/200'} alt={'poster'}/>
+                <Text fontWeight={'bold'}>Title</Text>
+                <Text fontSize='sm'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab amet atque autem consectetur ea esse impedit inventore ipsam, itaque laudantium modi neque nulla provident quas quibusdam veniam vitae voluptatum.</Text>
+                <Flex>
+                    <HStack>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                    </HStack>
+                    <Spacer/>
+                    <IconButton variant={'filled'} color={'red.500'} aria-label={'favorite'} icon={<MdFavorite/>}/>
+                    <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>} />
+                </Flex>
+            </Box>
+            <Box maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                <img src={'https://picsum.photos/200/200'} alt={'poster'}/>
+                <Text fontWeight={'bold'}>Title</Text>
+                <Text fontSize='sm'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab amet atque autem consectetur ea esse impedit inventore ipsam, itaque laudantium modi neque nulla provident quas quibusdam veniam vitae voluptatum.</Text>
+                <Flex>
+                    <HStack>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                        <MdStarRate color={'gold'}/>
+                    </HStack>
+                    <Spacer/>
+                    <IconButton variant={'filled'} color={'red.500'} aria-label={'favorite'} icon={<MdFavorite/>}/>
+                    <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>} />
+                </Flex>
+            </Box>
+
+        </SimpleGrid>
     );
 }
