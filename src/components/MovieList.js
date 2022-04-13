@@ -7,16 +7,13 @@ import {Link} from "react-router-dom";
 
 export function MovieList() {
     const movies = useSelector(state => state.movies);
-    console.log(movies)
     if(movies.isLoading){
-        console.log('loading')
         return <Spinner/>
     }
     return (
         <SimpleGrid columns={3}>
             {
                 movies.movieList.map(movie=>{
-                    console.log(movie.imdbID)
                     return (
                         <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
