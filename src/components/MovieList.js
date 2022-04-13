@@ -9,9 +9,9 @@ export function MovieList() {
     return (
         <SimpleGrid columns={3}>
             {
-                movies.map(movie=>{
+                movies.map((movie, index)=>{
                     return (
-                        <Box maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                        <Box key={index} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
                             <Text fontWeight={'bold'}>{movie.Title}</Text>
                             <Text fontSize='sm'>{movie.Plot}</Text>

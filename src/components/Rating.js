@@ -10,6 +10,7 @@ export function Rating() {
             stars.push(<IconButton color={'gold'}
                                    variant={'filled'}
                                    size={'1'}
+                                   isRound='true'
                                    p={'1'}
                                    icon={<MdStarRate/>} key={i}
                                    onClick={() => setRating(i + 1)}
