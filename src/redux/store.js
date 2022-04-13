@@ -7,9 +7,14 @@ import logger from "redux-logger";
 
 const middleware = [logger, thunk];
 
-export const store = createStore(
+const store = createStore(
     reducer,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(...middleware)
+    )
 );
+
+store.subscribe(() => {
+    localStorage.setItem('movies', JSON.stringify(store.getState().movies));
+});
 
 export default store;
