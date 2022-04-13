@@ -14,7 +14,7 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-    localStorage.setItem('movies', JSON.stringify(store.getState().movies));
+    localStorage.setItem('movies', JSON.stringify(store.getState().movies.movieList));
     console.log(store.getState());
 });
 

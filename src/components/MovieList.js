@@ -3,17 +3,20 @@ import {Box, Flex, HStack, IconButton, SimpleGrid, Text} from "@chakra-ui/react"
 import { MdFavorite, MdWatchLater } from "react-icons/md";
 import {Rating} from "./Rating";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 export function MovieList() {
-    const movies = useSelector(state => state.movies);
+    const movies = useSelector(state => state.movies.movieList);
+    console.log(movies)
     return (
         <SimpleGrid columns={3}>
             {
-                movies.map((movie, index)=>{
+                movies.map(movie=>{
+                    console.log(movie.imdbID)
                     return (
-                        <Box key={index} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                        <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
-                            <Text fontWeight={'bold'}>{movie.Title}</Text>
+                            <Link to={'/'+movie.imdbID+'/'}><Text fontWeight={'bold'}>{movie.Title}</Text></Link>
                             <Text fontSize='sm'>{movie.Plot}</Text>
                             <Flex>
                                 <HStack>
