@@ -14,6 +14,7 @@ export function Search() {
     const onSearchSubmit = (e) => {
         e.preventDefault();
         dispatch(fetchMovie(searchValue));
+        setSearchValue('')
     };
     return (
         <HStack>
