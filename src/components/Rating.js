@@ -8,17 +8,17 @@ export function Rating() {
     for (let i = 0; i < 5; i++) {
         if (i < rating){
             stars.push(<IconButton color={'gold'}
+                                   variant={'filled'}
                                    size={'1'}
-                                   isRound={'true'}
                                    p={'1'}
                                    icon={<MdStarRate/>} key={i}
                                    onClick={() => setRating(i + 1)}
                                    aria-label={'star'}/>);
         }
         else{
-            stars.push(<IconButton color={'white'}
+            stars.push(<IconButton color={'gray.200'}
+                                   variant={'filled'}
                                    size={'1'}
-                                   isRound={'true'}
                                    p={'1'}
                                    icon={<MdStarRate/>} key={i}
                                    onClick={() => setRating(i + 1)}
