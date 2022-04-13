@@ -1,6 +1,4 @@
 import {ChakraProvider} from "@chakra-ui/react";
-import {Search} from "./components/Search";
-import {MovieList} from "./components/MovieList";
 import {Layout} from "./components/Layout";
 import {Provider} from "react-redux";
 import store from "./redux/store";
@@ -15,6 +13,9 @@ function App() {
                   <Layout>
                       <Routes>
                           <Route exact path="/" element={<Home/>}/>
+                          <Route path={'/:id'}/>
+                          <Route path={'/favourites/'}/>
+                          <Route path={'/watch-later/'}/>
                       </Routes>
                   </Layout>
             </HashRouter>
