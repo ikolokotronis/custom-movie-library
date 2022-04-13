@@ -1,4 +1,4 @@
-import {ADD_MOVIE_FROM_SEARCH} from "../actions/addMovieFromSearch";
+import {ADD_MOVIE_FROM_SEARCH} from "../actions/addMovieFromFetch";
 
 const initialState = localStorage.getItem('movies') ? JSON.parse(localStorage.getItem('movies')) : [];
 

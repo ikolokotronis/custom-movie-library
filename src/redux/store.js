@@ -15,6 +15,7 @@ const store = createStore(
 
 store.subscribe(() => {
     localStorage.setItem('movies', JSON.stringify(store.getState().movies));
+    console.log(store.getState());
 });
 
 export default store;

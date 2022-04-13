@@ -6,15 +6,14 @@ import {
 } from "@chakra-ui/react";
 import {SearchIcon} from "@chakra-ui/icons";
 import {useDispatch, useSelector} from "react-redux";
-import {addMovieFromSearch} from "../redux/actions/addMovieFromSearch";
+import {fetchMovie} from "../redux/actions/fetchMovie";
 
 export function Search() {
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
-    const movies = useSelector(state=>state.movies);
     const onSearchSubmit = (e) => {
         e.preventDefault();
-        dispatch(addMovieFromSearch(searchValue));
+        dispatch(fetchMovie(searchValue));
     };
     return (
         <HStack>
