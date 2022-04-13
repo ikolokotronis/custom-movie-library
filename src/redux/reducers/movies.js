@@ -1,4 +1,6 @@
 import {ADD_MOVIE_FROM_FETCH} from "../actions/addMovieFromFetch";
+import {START_FETCHING_MOVIE} from "../actions/startFetchingMovie";
+import {STOP_FETCHING_MOVIE} from "../actions/stopFetchingMovie";
 
 
 const initialState = {
@@ -9,6 +11,16 @@ const initialState = {
 
 export function moviesReducer(state = initialState, action){
   switch(action.type){
+      case START_FETCHING_MOVIE:
+          return {
+              ...state,
+              isLoading: true
+          };
+      case STOP_FETCHING_MOVIE:
+          return {
+              ...state,
+              isLoading: false
+          };
       case ADD_MOVIE_FROM_FETCH:
           return {
               ...state,
