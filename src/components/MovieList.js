@@ -16,8 +16,9 @@ export function MovieList() {
             {
                 movies.movieList.map(movie=>{
                     const ratingDataFromChild = (rating) => {
-                        localStorage.setItem("default_movie_rating:"+movie.imdbID,rating);
+                        localStorage.setItem("user_movie_rating:"+movie.imdbID,rating);
                     }
+
                     return (
                         <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
@@ -25,10 +26,10 @@ export function MovieList() {
                             <Text fontSize='sm'>{movie.Plot}</Text>
                             <Flex>
                                 <HStack>
-                                    <Rating default_rating={localStorage.getItem("default_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
+                                    <Rating default_rating={localStorage.getItem("user_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
                                 </HStack>
-                                <IconButton variant={'filled'} color={'red.500'} aria-label={'favorite'} icon={<MdFavorite/>}/>
-                                <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>} />
+                                <IconButton variant={'filled'} color={"gray.400"} aria-label={'favorite'} icon={<MdFavorite/>}/>
+                                <IconButton variant={'filled'} color={'gray.400'} aria-label="watch-later" icon={<MdWatchLater/>} />
                             </Flex>
                         </Box>
                     )
