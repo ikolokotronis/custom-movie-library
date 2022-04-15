@@ -1,4 +1,3 @@
-import {ChakraProvider} from "@chakra-ui/react";
 import {Layout} from "./components/Layout";
 import {Provider} from "react-redux";
 import store from "./redux/store";
@@ -8,7 +7,6 @@ import {Home} from "./components/Home";
 function App() {
   return (
       <Provider store={store}>
-        <ChakraProvider>
             <HashRouter>
                   <Layout>
                       <Routes>
@@ -19,7 +17,6 @@ function App() {
                       </Routes>
                   </Layout>
             </HashRouter>
-        </ChakraProvider>
       </Provider>
   );
 }
