@@ -10,10 +10,10 @@ export function Layout({children}) {
                 <Link to={'/'}>
                     <IconButton color={'blue.500'} variant={'filled'} aria-label="menu" icon={<MdHome/>}/>
                 </Link>
-                <Link to={'/favourites/'}>
+                <Link to={'/movies/favourites/'}>
                     <IconButton color={'red.500'} variant={'filled'} aria-label="favorite" icon={<MdFavorite/>}/>
                 </Link>
-                <Link to={'/watch-later/'}>
+                <Link to={'/movies/watch-later/'}>
                     <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>}/><
                     /Link>
             </HStack>

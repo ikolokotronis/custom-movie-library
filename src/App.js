@@ -13,9 +13,9 @@ function App() {
                   <Layout>
                       <Routes>
                           <Route exact path="/" element={<Home/>}/>
-                          <Route path={'/:id'}/>
-                          <Route path={'/favourites/'}/>
-                          <Route path={'/watch-later/'}/>
+                          <Route path={'/movies/:id'}/>
+                          <Route path={'/movies/favourites/'}/>
+                          <Route path={'/movies/watch-later/'}/>
                       </Routes>
                   </Layout>
             </HashRouter>

@@ -10,18 +10,22 @@ export function MovieList() {
     if(movies.isLoading){
         return <Spinner/>
     }
+
     return (
         <SimpleGrid columns={3}>
             {
                 movies.movieList.map(movie=>{
+                    const ratingDataFromChild = (rating) => {
+                        localStorage.setItem("default_movie_rating:"+movie.imdbID,rating);
+                    }
                     return (
                         <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
-                            <Link to={'/'+movie.imdbID+'/'}><Text fontWeight={'bold'}>{movie.Title}</Text></Link>
+                            <Link to={'/movies/'+movie.imdbID+'/'}><Text fontWeight={'bold'}>{movie.Title}</Text></Link>
                             <Text fontSize='sm'>{movie.Plot}</Text>
                             <Flex>
                                 <HStack>
-                                    <Rating/>
+                                    <Rating default_rating={localStorage.getItem("default_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
                                 </HStack>
                                 <IconButton variant={'filled'} color={'red.500'} aria-label={'favorite'} icon={<MdFavorite/>}/>
                                 <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>} />
