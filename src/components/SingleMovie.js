@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Box, Divider, Flex, Heading, HStack, Image, Spacer, Spinner, Text, VStack} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
+import {Rating} from "./Rating";
 
 export function SingleMovie({director, writer, actors, plot, poster,
                                 runtime, genre, year, country, awards, imdbRating, imdbID}) {
@@ -16,13 +17,19 @@ export function SingleMovie({director, writer, actors, plot, poster,
                 setMovie(data); // set the state
             })
     }, [movie_id]);
+
+    const ratingDataFromChild = (rating) => {
+        localStorage.setItem("user_movie_rating:"+movie.imdbID,rating);
+    }
+
     if (!movie) {
         return <Spinner/>
     }
     return (
         <VStack>
             <Heading>{movie.Title}</Heading>
-            <Text><i>{movie.Year}</i></Text>
+            <Rating default_rating={localStorage.getItem("user_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
+            <Text pt={'1'}><i>{movie.Year}</i></Text>
             <Text>{movie.Runtime}</Text>
             <Text color={'green'}>{movie.imdbRating}</Text>
         <Flex pl={'150'} pr={'150'}>
