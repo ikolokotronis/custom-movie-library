@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Divider, Flex, Heading, HStack, Image, Spinner, Text, VStack} from "@chakra-ui/react";
+import {Box, Divider, Flex, Heading, HStack, Image, Spacer, Spinner, Text, VStack} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
 
@@ -22,17 +22,20 @@ export function SingleMovie({director, writer, actors, plot, poster,
     return (
         <VStack>
             <Heading>{movie.Title}</Heading>
-            <Text color={'green'}>{movie.imdbRating}</Text>
+            <Text><i>{movie.Year}</i></Text>
             <Text>{movie.Runtime}</Text>
+            <Text color={'green'}>{movie.imdbRating}</Text>
         <Flex pl={'150'} pr={'150'}>
             <Box maxW={'250px'}>
-                <Image maxW={'250px'} src={movie.Poster} alt={'poster'}/>
+                <Image maxW={'250px'} src={movie.Poster} alt={'poster'} pb={'2'}/>
                 <Text>Genre: <b>{movie.Genre}</b></Text>
                 <Text>Director: <b>{movie.Director}</b></Text>
                 <Text>Writer/s: <b>{movie.Writer}</b></Text>
                 <Text>Released: <b>{movie.Released}, {movie.Country}</b></Text>
+                <Text>Rated: <b>{movie.Rated}</b></Text>
+                <Text>Metascore: <b>{movie.Metascore}</b></Text>
             </Box>
-            <Divider p={'5'} orientation='vertical' />
+            <Divider orientation={'vertical'} p={'5'}/>
                 <Box maxW={'300px'}>
                     <Heading p={'3'} size={'md'}>PLOT</Heading>
                     <Text>{movie.Plot}</Text>
