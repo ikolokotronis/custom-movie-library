@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Divider, Flex, Heading, HStack, Image, Spacer, Spinner, Text, VStack} from "@chakra-ui/react";
+import {Box, Divider, Flex, Heading, Image, Spinner, Text, VStack} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
 import {Rating} from "./Rating";
 
-export function SingleMovie({director, writer, actors, plot, poster,
-                                runtime, genre, year, country, awards, imdbRating, imdbID}) {
+export function SingleMovie() {
     const [movie, setMovie] = useState();
     const params = useParams();
     const movie_id = params.id;
