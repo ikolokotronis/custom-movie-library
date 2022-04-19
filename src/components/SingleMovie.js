@@ -30,7 +30,16 @@ export function SingleMovie() {
             <Rating default_rating={localStorage.getItem("user_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
             <Text pt={'1'}><i>{movie.Year}</i></Text>
             <Text>{movie.Runtime}</Text>
-            <Text color={'green'}>{movie.imdbRating}</Text>
+            <Text color={()=>{
+                if (movie.imdbRating > 8) {
+                    return 'green.500'
+                } else if (movie.imdbRating > 5) {
+                    return 'yellow.500'
+                } else {
+                    return 'red.500'
+                }
+            }
+            }>{movie.imdbRating}</Text>
         <Flex pl={'150'} pr={'150'}>
             <Box maxW={'250px'}>
                 <Image maxW={'250px'} src={movie.Poster} alt={'poster'} pb={'2'}/>

@@ -3,6 +3,7 @@ import {START_LOADING} from "../actions/startLoading";
 import {STOP_LOADING} from "../actions/stopLoading";
 import {ERROR_WHILE_FETCHING_MOVIE} from "../actions/errorWhileFetchingMovie";
 import {REMOVE_MOVIE_FROM_LIST} from "../actions/removeMovieFromList";
+import {MOVIE_IS_FAVORITE} from "../actions/movieIsFavorite";
 
 
 const initialState = {
@@ -38,6 +39,16 @@ export function moviesReducer(state = initialState, action){
           return {
               ...state,
               movieList: [...state.movieList.filter(movie => movie.imdbID !== action.payload)]
+          };
+      case MOVIE_IS_FAVORITE:
+          return {
+              ...state,
+              movieList: [...state.movieList.map(movie => {
+                  if(movie.imdbID === action.payload.imdbID){
+                      movie.isFavorite = !action.payload.isFavorite;
+                  }
+                  return movie;
+              })]
           };
       default:
           return state;
