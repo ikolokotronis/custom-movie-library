@@ -1,21 +1,21 @@
 import {addMovieFromFetch} from "./addMovieFromFetch";
 import {fetchByTitle} from "../../api/fetchByTitle";
-import {startFetchingMovie} from "./startFetchingMovie";
-import {stopFetchingMovie} from "./stopFetchingMovie";
+import {startLoading} from "./startLoading";
+import {stopLoading} from "./stopLoading";
 import {errorWhileFetchingMovie} from "./errorWhileFetchingMovie";
 
 export const fetchMovie = (movie_title) => dispatch => {
-    dispatch(startFetchingMovie());
+    dispatch(startLoading());
     fetchByTitle(movie_title)
         .then(res => res.json())
         .then(data => {
             if (data.Error) {
                 dispatch(errorWhileFetchingMovie(data.Error));
-                dispatch(stopFetchingMovie());
+                dispatch(stopLoading());
             }
             else {
                 dispatch(addMovieFromFetch(data));
-                dispatch(stopFetchingMovie());
+                dispatch(stopLoading());
             }
         })
         .catch(err => dispatch(errorWhileFetchingMovie(err)));

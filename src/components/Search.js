@@ -24,7 +24,7 @@ export function Search() {
                         pointerEvents='none'
                         children={<SearchIcon color='gray.300' />}
                     />
-                    <Input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='search-movie' placeholder='Search for a movie' />
+                    <Input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='search-movie' placeholder='Add a movie to list' />
                 </InputGroup>
             </form>
         </HStack>

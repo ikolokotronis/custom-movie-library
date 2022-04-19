@@ -1,7 +1,8 @@
 import {ADD_MOVIE_FROM_FETCH} from "../actions/addMovieFromFetch";
-import {START_FETCHING_MOVIE} from "../actions/startFetchingMovie";
-import {STOP_FETCHING_MOVIE} from "../actions/stopFetchingMovie";
+import {START_LOADING} from "../actions/startLoading";
+import {STOP_LOADING} from "../actions/stopLoading";
 import {ERROR_WHILE_FETCHING_MOVIE} from "../actions/errorWhileFetchingMovie";
+import {REMOVE_MOVIE_FROM_LIST} from "../actions/removeMovieFromList";
 
 
 const initialState = {
@@ -12,12 +13,12 @@ const initialState = {
 
 export function moviesReducer(state = initialState, action){
   switch(action.type){
-      case START_FETCHING_MOVIE:
+      case START_LOADING:
           return {
               ...state,
               isLoading: true
           };
-      case STOP_FETCHING_MOVIE:
+      case STOP_LOADING:
           return {
               ...state,
               isLoading: false
@@ -32,6 +33,11 @@ export function moviesReducer(state = initialState, action){
           return {
               ...state,
               movieList: [...state.movieList, action.payload]
+          };
+      case REMOVE_MOVIE_FROM_LIST:
+          return {
+              ...state,
+              movieList: [...state.movieList.filter(movie => movie.imdbID !== action.payload)]
           };
       default:
           return state;
