@@ -3,8 +3,9 @@ import {START_LOADING} from "../actions/startLoading";
 import {STOP_LOADING} from "../actions/stopLoading";
 import {ERROR_WHILE_FETCHING_MOVIE} from "../actions/errorWhileFetchingMovie";
 import {REMOVE_MOVIE_FROM_LIST} from "../actions/removeMovieFromList";
-import {MOVIE_IS_FAVOURITE} from "../actions/movieIsFavourite";
+import {SET_MOVIE_IS_FAVOURITE} from "../actions/setMovieIsFavourite";
 import {SET_MOVIE_RATING} from "../actions/setMovieRating";
+import {SET_MOVIE_WATCH_LATER} from "../actions/setMovieWatchLater";
 
 
 const initialState = {
@@ -41,7 +42,7 @@ export function moviesReducer(state = initialState, action){
               ...state,
               movieList: [...state.movieList.filter(movie => movie.imdbID !== action.payload)]
           };
-      case MOVIE_IS_FAVOURITE:
+      case SET_MOVIE_IS_FAVOURITE:
           return {
               ...state,
               movieList: [...state.movieList.map(movie => {
@@ -57,6 +58,16 @@ export function moviesReducer(state = initialState, action){
               movieList: [...state.movieList.map(movie => {
                   if(movie.imdbID === action.payload.movie.imdbID){
                       movie.localUserRating = action.payload.rating;
+                  }
+                  return movie;
+              })]
+          };
+      case SET_MOVIE_WATCH_LATER:
+          return {
+              ...state,
+              movieList: [...state.movieList.map(movie => {
+                  if(movie.imdbID === action.payload.imdbID){
+                      movie.watchLater = !action.payload.watchLater;
                   }
                   return movie;
               })]

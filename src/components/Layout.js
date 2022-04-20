@@ -1,5 +1,5 @@
 import React from 'react';
-import {Flex, HStack, IconButton, useColorMode, VStack} from "@chakra-ui/react";
+import {HStack, IconButton, useColorMode, VStack} from "@chakra-ui/react";
 import {MdHome, MdFavorite, MdWatchLater} from 'react-icons/md';
 import {Link} from "react-router-dom";
 import {FaMoon, FaSun} from "react-icons/fa";
@@ -16,7 +16,7 @@ export function Layout({children}) {
                     <IconButton color={'red.500'} variant={'filled'} aria-label="favorite" icon={<MdFavorite/>}/>
                 </Link>
                 <Link to={'/movies/watch-later/'}>
-                    <IconButton color={'gray.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>}/>
+                    <IconButton color={'green.500'} variant={'filled'} aria-label="watch-later" icon={<MdWatchLater/>}/>
                 </Link>
                 <IconButton
                     icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}

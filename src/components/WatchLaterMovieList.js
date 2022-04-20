@@ -1,58 +1,54 @@
-import React from 'react';
-import {Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Spinner, Text} from "@chakra-ui/react";
-import { MdFavorite, MdWatchLater } from "react-icons/md";
-import {Rating} from "./Rating";
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {Badge, Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Text} from "@chakra-ui/react";
 import {Link} from "react-router-dom";
-import { CloseButton } from '@chakra-ui/react'
-import {removeMovieFromList} from "../redux/actions/removeMovieFromList";
+import {Rating} from "./Rating";
+import {MdFavorite, MdWatchLater} from "react-icons/md";
 import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
 import {setMovieRating} from "../redux/actions/setMovieRating";
 import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
 
-export function MovieList() {
+export function WatchLaterMovieList() {
     const movies = useSelector(state => state.movies);
+    const [watchLaterMovies, setWatchLaterMovies] = useState([]);
     const dispatch = useDispatch();
-    if(movies.isLoading){
-        return <Spinner/>
+    useEffect(()=>{
+        setWatchLaterMovies(movies.movieList.filter(movie => movie.watchLater));
+    },[movies]);
+    if (!watchLaterMovies.length) {
+        return <Badge colorScheme={'red'}>No movies to watch later</Badge>
     }
-
-    function onCloseClick(imdbID) {
-        dispatch(removeMovieFromList(imdbID));
-    }
-
     return (
         <SimpleGrid columns={3}>
             {
-                movies.movieList.map(movie=>{
+                watchLaterMovies.map(movie => {
                     const ratingDataFromChild = (rating) => {
                         dispatch(setMovieRating(movie, rating));
                     }
-
                     const onFavoriteClick = () => {
                         dispatch(setMovieIsFavourite(movie));
                     }
-
                     const onWatchLaterClick = () => {
                         dispatch(setMovieWatchLater(movie));
                     }
-
                     return (
-                        <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'} borderColor={'gray.300'}>
+                        <Box key={movie.imdbID} maxW={'235px'} border={'1px'} borderRadius={'5'} p={'4'}
+                             borderColor={'gray.300'}>
                             <Flex>
                                 <Spacer/>
-                                <CloseButton onClick={()=>onCloseClick(movie.imdbID)} pb={'3'} align-self={'end'}/>
                             </Flex>
                             <img src={`${movie.Poster}`} alt={'poster'}/>
-                            <Link to={'/movies/'+movie.imdbID+'/'}><Text fontWeight={'bold'}>{movie.Title}</Text></Link>
+                            <Link to={'/movies/' + movie.imdbID + '/'}><Text
+                                fontWeight={'bold'}>{movie.Title}</Text></Link>
                             <Text fontSize='sm'>{movie.Plot}</Text>
                             <Flex>
                                 <HStack>
-                                    <Rating default_rating={movie.localUserRating} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
+                                    <Rating default_rating={movie.localUserRating}
+                                            sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
                                 </HStack>
                                 <IconButton onClick={onFavoriteClick} variant={'filled'}
                                             color={movie.isFavourite ?
-                                                "red.500" : "gray.300"}
+                                                "red.500" : "gray.400"}
                                             aria-label={'favorite'} icon={<MdFavorite/>}/>
                                 <IconButton onClick={onWatchLaterClick} variant={'filled'}
                                             color={movie.watchLater ?
@@ -63,7 +59,6 @@ export function MovieList() {
                     )
                 })
             }
-
         </SimpleGrid>
     );
 }
