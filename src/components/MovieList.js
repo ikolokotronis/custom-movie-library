@@ -6,7 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import { CloseButton } from '@chakra-ui/react'
 import {removeMovieFromList} from "../redux/actions/removeMovieFromList";
-import {movieIsFavorite} from "../redux/actions/movieIsFavorite";
+import {movieIsFavourite} from "../redux/actions/movieIsFavourite";
+import {setMovieRating} from "../redux/actions/setMovieRating";
 
 export function MovieList() {
     const movies = useSelector(state => state.movies);
@@ -24,11 +25,11 @@ export function MovieList() {
             {
                 movies.movieList.map(movie=>{
                     const ratingDataFromChild = (rating) => {
-                        localStorage.setItem("user_movie_rating:"+movie.imdbID, rating);
+                        dispatch(setMovieRating(movie, rating));
                     }
 
                     const onFavoriteClick = () => {
-                        dispatch(movieIsFavorite(movie));
+                        dispatch(movieIsFavourite(movie));
                     }
 
                     return (
@@ -42,10 +43,10 @@ export function MovieList() {
                             <Text fontSize='sm'>{movie.Plot}</Text>
                             <Flex>
                                 <HStack>
-                                    <Rating default_rating={localStorage.getItem("user_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
+                                    <Rating default_rating={movie.localUserRating} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
                                 </HStack>
                                 <IconButton onClick={onFavoriteClick} variant={'filled'}
-                                            color={movie.isFavorite ?
+                                            color={movie.isFavourite ?
                                                 "red.500" : "gray.400"}
                                             aria-label={'favorite'} icon={<MdFavorite/>}/>
                                 <IconButton variant={'filled'} color={'gray.400'} aria-label="watch-later" icon={<MdWatchLater/>} />
