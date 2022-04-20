@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Box, Divider, Flex, Heading, Image, Spinner, Text, VStack} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
-import {Rating} from "./Rating";
 
 export function SingleMovie() {
     const [movie, setMovie] = useState();
@@ -17,9 +16,6 @@ export function SingleMovie() {
             })
     }, [movie_id]);
 
-    const ratingDataFromChild = (rating) => {
-        localStorage.setItem("user_movie_rating:"+movie.imdbID,rating);
-    }
 
     if (!movie) {
         return <Spinner/>
@@ -27,7 +23,6 @@ export function SingleMovie() {
     return (
         <VStack>
             <Heading>{movie.Title}</Heading>
-            <Rating default_rating={localStorage.getItem("user_movie_rating:"+movie.imdbID)} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
             <Text pt={'1'}><i>{movie.Year}</i></Text>
             <Text>{movie.Runtime}</Text>
             <Text color={()=>{
