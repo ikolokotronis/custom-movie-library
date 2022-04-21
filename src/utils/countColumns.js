@@ -12,8 +12,11 @@ export function countColumns(movies_length) {
     else if (movies_length > 2){
         column_count = 3;
     }
-    else {
+    else if (movies_length === 2){
         column_count = 2;
+    }
+    else {
+        column_count = 1;
     }
     return column_count
 }
