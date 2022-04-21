@@ -37,7 +37,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Create your own movie library easily! Store your favourite movies or movies you are interested in and watch your library grow!
+Create your own movie library easily! Store your favourite movies or movies you are interested in all in one place and watch your library grow!
 
 ### Built With
 
