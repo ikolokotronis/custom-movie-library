@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-<h3 align="center">yourMovieLibrary</h3>
+<h3 align="center">yourMovieLib</h3>
 
   <p align="center">
     <br />
