@@ -1,25 +1,34 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Divider, Flex, Heading, Image, Spinner, Text, VStack} from "@chakra-ui/react";
+import {Badge, Box, Divider, Flex, Heading, Image, Spinner, Text, VStack} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
 
 export function SingleMovie() {
     const [movie, setMovie] = useState();
+    const [error, setError] = useState();
     const params = useParams();
     const movie_id = params.id;
     useEffect(()=>{
         fetch(`https://www.omdbapi.com/?i=${movie_id}&apikey=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                setMovie(data); // set the state
+                if (data.Response === 'False') {
+                    setError(data.Error);
+                } else {
+                    setMovie(data);
+                }
             })
+            .catch(error => setError(error));
     }, [movie_id]);
 
+    if (error) {
+        return <Badge colorScheme={'red'}>No movie matches this imdbID</Badge>
+    }
 
     if (!movie) {
         return <Spinner/>
     }
+
     return (
         <VStack>
             <Heading>{movie.Title}</Heading>

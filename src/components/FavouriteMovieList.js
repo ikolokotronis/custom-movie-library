@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Badge, Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Text} from "@chakra-ui/react";
 import {Link} from "react-router-dom";
@@ -10,15 +10,19 @@ import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
 import {countColumns} from "../utils/countColumns";
 
 export function FavouriteMovieList() {
+    const mounted = useRef(false);
     const movies = useSelector(state => state.movies);
     const [favouriteMovies, setFavouriteMovies] = useState([]);
     const dispatch = useDispatch();
+
     useEffect(()=>{
         setFavouriteMovies(movies.movieList.filter(movie => movie.isFavourite));
     },[movies]);
-    if (!favouriteMovies.length) {
-        return <Badge colorScheme={'red'}>No favourite movies</Badge>
+
+    if ( mounted.current && !favouriteMovies.length) {
+        return <Badge colorScheme={'green'}>No favourite movies</Badge>
     }
+
     return (
         <SimpleGrid columns={countColumns(favouriteMovies.length)}>
             {

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Badge, Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Text} from "@chakra-ui/react";
 import {Link} from "react-router-dom";
@@ -10,13 +10,16 @@ import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
 import {countColumns} from "../utils/countColumns";
 
 export function WatchLaterMovieList() {
+    const mounted = useRef(false);
     const movies = useSelector(state => state.movies);
     const [watchLaterMovies, setWatchLaterMovies] = useState([]);
     const dispatch = useDispatch();
+
     useEffect(()=>{
         setWatchLaterMovies(movies.movieList.filter(movie => movie.watchLater));
     },[movies]);
-    if (!watchLaterMovies.length) {
+
+    if ( mounted.current && !watchLaterMovies.length) {
         return <Badge colorScheme={'green'}>No movies to watch later</Badge>
     }
 
