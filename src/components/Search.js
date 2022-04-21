@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {
     HStack,
     InputLeftElement,
-    InputGroup, Input,
+    InputGroup, Input, useToast,
 } from "@chakra-ui/react";
 import {SearchIcon} from "@chakra-ui/icons";
 import {useDispatch} from "react-redux";
@@ -11,10 +11,21 @@ import {fetchMovie} from "../redux/actions/fetchMovie";
 export function Search() {
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
+    const toast = useToast();
     const onSearchSubmit = (e) => {
         e.preventDefault();
-        dispatch(fetchMovie(searchValue));
-        setSearchValue('')
+        if (searchValue.length === 0) {
+            toast({
+                title: 'Error',
+                description: 'Please enter a movie name',
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+            });
+        } else {
+            dispatch(fetchMovie(searchValue));
+            setSearchValue('');
+        }
     };
     return (
         <HStack>

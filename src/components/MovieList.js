@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Spinner, Text} from "@chakra-ui/react";
+import {Box, Flex, HStack, IconButton, SimpleGrid, Spacer, Spinner, Text, useToast} from "@chakra-ui/react";
 import { MdFavorite, MdWatchLater } from "react-icons/md";
 import {Rating} from "./Rating";
 import {useDispatch, useSelector} from "react-redux";
@@ -14,8 +14,20 @@ import {countColumns} from "../utils/countColumns";
 export function MovieList() {
     const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
+    const toast = useToast();
+
     if(movies.isLoading){
         return <Spinner/>
+    }
+
+    if (movies.error){
+        toast({
+            title: 'Error',
+            description: movies.error,
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+        });
     }
 
     function onCloseClick(imdbID) {

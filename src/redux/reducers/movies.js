@@ -27,7 +27,6 @@ export function moviesReducer(state = initialState, action){
               isLoading: false
           };
       case ERROR_WHILE_FETCHING_MOVIE:
-          console.log('error!')
           return {
               ...state,
               error: action.error

@@ -1,5 +1,6 @@
 export function countColumns(movies_length) {
     let column_count;
+
     if(movies_length > 16){
         column_count = 6;
     }
@@ -18,5 +19,6 @@ export function countColumns(movies_length) {
     else {
         column_count = 1;
     }
+
     return column_count
 }
