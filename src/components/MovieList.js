@@ -9,6 +9,7 @@ import {removeMovieFromList} from "../redux/actions/removeMovieFromList";
 import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
 import {setMovieRating} from "../redux/actions/setMovieRating";
 import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
+import {countColumns} from "./utils/countColumns";
 
 export function MovieList() {
     const movies = useSelector(state => state.movies);
@@ -22,7 +23,7 @@ export function MovieList() {
     }
 
     return (
-        <SimpleGrid columns={3}>
+        <SimpleGrid columns={countColumns(movies.movieList.length)}>
             {
                 movies.movieList.map(movie=>{
                     const ratingDataFromChild = (rating) => {

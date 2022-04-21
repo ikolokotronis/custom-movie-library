@@ -7,6 +7,7 @@ import {MdFavorite, MdWatchLater} from "react-icons/md";
 import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
 import {setMovieRating} from "../redux/actions/setMovieRating";
 import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
+import {countColumns} from "./utils/countColumns";
 
 export function WatchLaterMovieList() {
     const movies = useSelector(state => state.movies);
@@ -16,10 +17,11 @@ export function WatchLaterMovieList() {
         setWatchLaterMovies(movies.movieList.filter(movie => movie.watchLater));
     },[movies]);
     if (!watchLaterMovies.length) {
-        return <Badge colorScheme={'red'}>No movies to watch later</Badge>
+        return <Badge colorScheme={'green'}>No movies to watch later</Badge>
     }
+
     return (
-        <SimpleGrid columns={3}>
+        <SimpleGrid columns={countColumns(watchLaterMovies.length)}>
             {
                 watchLaterMovies.map(movie => {
                     const ratingDataFromChild = (rating) => {

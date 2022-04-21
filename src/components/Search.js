@@ -5,7 +5,7 @@ import {
     InputGroup, Input,
 } from "@chakra-ui/react";
 import {SearchIcon} from "@chakra-ui/icons";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {fetchMovie} from "../redux/actions/fetchMovie";
 
 export function Search() {
@@ -24,7 +24,7 @@ export function Search() {
                         pointerEvents='none'
                         children={<SearchIcon color='gray.300' />}
                     />
-                    <Input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='search-movie' placeholder='Search for a movie' />
+                            <Input value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} type='search-movie' placeholder='Add a movie to your library' />
                 </InputGroup>
             </form>
         </HStack>

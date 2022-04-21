@@ -7,6 +7,7 @@ import {MdFavorite, MdWatchLater} from "react-icons/md";
 import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
 import {setMovieRating} from "../redux/actions/setMovieRating";
 import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
+import {countColumns} from "./utils/countColumns";
 
 export function FavouriteMovieList() {
     const movies = useSelector(state => state.movies);
@@ -19,7 +20,7 @@ export function FavouriteMovieList() {
         return <Badge colorScheme={'red'}>No favourite movies</Badge>
     }
     return (
-        <SimpleGrid columns={3}>
+        <SimpleGrid columns={countColumns(favouriteMovies.length)}>
             {
                 favouriteMovies.map(movie => {
                     const ratingDataFromChild = (rating) => {
