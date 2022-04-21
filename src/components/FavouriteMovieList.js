@@ -7,7 +7,7 @@ import {MdFavorite, MdWatchLater} from "react-icons/md";
 import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
 import {setMovieRating} from "../redux/actions/setMovieRating";
 import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
-import {countColumns} from "./utils/countColumns";
+import {countColumns} from "../utils/countColumns";
 
 export function FavouriteMovieList() {
     const movies = useSelector(state => state.movies);
