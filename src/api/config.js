@@ -1,1 +1,3 @@
-export const API_KEY = "6b913ff6";
+import {KEY} from "./api_key";
+
+export const API_KEY = KEY;
