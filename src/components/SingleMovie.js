@@ -1,12 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import {Badge, Box, Divider, Flex, Heading, Image, Spinner, Text, VStack} from "@chakra-ui/react";
+import {
+    Badge,
+    Box,
+    Divider,
+    Flex,
+    Heading,
+    IconButton,
+    Image,
+    Spacer,
+    Spinner,
+    Text,
+    VStack
+} from "@chakra-ui/react";
 import {useParams} from "react-router-dom";
 import {API_KEY} from "../api/config";
+import {Rating} from "./Rating";
+import {MdFavorite, MdWatchLater} from "react-icons/md";
+import {setMovieRating} from "../redux/actions/setMovieRating";
+import {setMovieIsFavourite} from "../redux/actions/setMovieIsFavourite";
+import {setMovieWatchLater} from "../redux/actions/setMovieWatchLater";
+import {useDispatch, useSelector} from "react-redux";
 
 export function SingleMovie() {
     const [movie, setMovie] = useState();
     const [error, setError] = useState();
     const params = useParams();
+    const dispatch = useDispatch();
+    const movies = useSelector(state => state.movies);
     const movie_id = params.id;
     useEffect(()=>{
         fetch(`https://www.omdbapi.com/?i=${movie_id}&apikey=${API_KEY}`)
@@ -14,12 +34,29 @@ export function SingleMovie() {
             .then(data => {
                 if (data.Response === 'False') {
                     setError(data.Error);
-                } else {
-                    setMovie(data);
+                }
+                else {
+                    movies.movieList.forEach(movie=>{
+                        if(movie.imdbID === data.imdbID){
+                            setMovie(movie);
+                        }
+                    })
                 }
             })
             .catch(error => setError(error));
     }, [movie_id]);
+
+    const ratingDataFromChild = (rating) => {
+        dispatch(setMovieRating(movie, rating));
+    }
+
+    const onFavoriteClick = () => {
+        dispatch(setMovieIsFavourite(movie));
+    }
+
+    const onWatchLaterClick = () => {
+        dispatch(setMovieWatchLater(movie));
+    }
 
     if (error) {
         return <Badge colorScheme={'red'}>No movie matches this imdbID</Badge>
@@ -47,6 +84,18 @@ export function SingleMovie() {
         <Flex pl={'150'} pr={'150'}>
             <Box maxW={'250px'}>
                 <Image maxW={'250px'} src={movie.Poster} alt={'poster'} pb={'2'}/>
+                <Flex pb={'1'} >
+                    <Rating default_rating={movie.localUserRating} sendRatingToParent={ratingDataFromChild} stars={() => movie.stars}/>
+                    <Spacer/>
+                    <IconButton onClick={onFavoriteClick} variant={'filled'}
+                                color={movie.isFavourite ?
+                                    "red.500" : "gray.300"}
+                                aria-label={'favorite'} icon={<MdFavorite/>}/>
+                    <IconButton onClick={onWatchLaterClick}  variant={'filled'}
+                                color={movie.watchLater ?
+                                    "green.500" : "gray.300"}
+                                aria-label="watch-later" icon={<MdWatchLater/>} />
+                </Flex>
                 <Text>Genre: <b>{movie.Genre}</b></Text>
                 <Text>Director: <b>{movie.Director}</b></Text>
                 <Text>Writer/s: <b>{movie.Writer}</b></Text>

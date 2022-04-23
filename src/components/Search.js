@@ -14,7 +14,7 @@ export function Search() {
     const toast = useToast();
     const onSearchSubmit = (e) => {
         e.preventDefault();
-        if (searchValue.length === 0) {
+        if (searchValue === '') {
             toast({
                 title: 'Error',
                 description: 'Please enter a movie name',
