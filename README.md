@@ -47,7 +47,11 @@ Your own movie library! Keep your favourite movies or movies that you are intere
 
 ## Demo
 
-<i>Not available yet</i>
+![](public/gifs/app-demo.gif)
+
+## Dark mode demo 
+
+![](public/gifs/dark-mode-demo.gif)
 
 <!-- GETTING STARTED -->
 ## Getting Started
