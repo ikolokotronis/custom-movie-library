@@ -73,7 +73,7 @@ To get a local copy up and running follow these steps
    ```
 4. Enter your API in `api/config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   const API_KEY = 'KEY_HERE';
    ```
 5. Compile and run   
    ```js
