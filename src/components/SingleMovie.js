@@ -72,7 +72,7 @@ export function SingleMovie() {
                 }
             })
             .catch(error => setError(error));
-    }, [movie_id, movies.movieList]);
+    }, [movie_id]);
     console.log(similarMovies);
 
     const ratingDataFromChild = (rating) => {
