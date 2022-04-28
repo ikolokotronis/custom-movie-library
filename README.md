@@ -42,7 +42,7 @@ Your own movie library! Keep your favourite movies or movies that you are intere
 ### Built With
 
 * [React.js](https://reactjs.org/)
-* [Redux.js](https://redux.js.org/)
+* [Redux](https://redux.js.org/)
 
 
 ## Demo
