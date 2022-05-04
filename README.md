@@ -66,7 +66,7 @@ To get a local copy up and running follow these steps
   ```
 ### Installation
 
-1. Get a free API Key at [https://www.omdbapi.com/e](https://www.omdbapi.com/)
+1. Get a free API Key at [https://www.omdbapi.com](https://www.omdbapi.com/)
 2. Clone the repo
    ```sh
    git clone https://github.com/ikolokotronis/yourMovieLib.git
@@ -75,7 +75,7 @@ To get a local copy up and running follow these steps
    ```sh
    npm install
    ```
-4. Enter your API in `api/config.js`
+4. Enter your API key in `api/config.js`
    ```js
    const API_KEY = 'KEY_HERE';
    ```
