@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-<h3 align="center">yourMovieLib</h3>
+<h3 align="center">Custom Movie Library</h3>
 
   <p align="center">
     <br />
@@ -69,7 +69,7 @@ To get a local copy up and running follow these steps
 1. Get a free API Key at [https://www.omdbapi.com](https://www.omdbapi.com/)
 2. Clone the repo
    ```sh
-   git clone https://github.com/ikolokotronis/yourMovieLib.git
+   git clone https://github.com/ikolokotronis/custom-movie-library.git
    ```
 3. Install NPM packages
    ```sh
@@ -102,6 +102,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 Ioannis Kolokotronis - ioanniskolokotronis1@gmail.com
 
-Project Link: [https://github.com/ikolokotronis/yourMovieLib](https://github.com/ikolokotronis/yourMovieLib)
+Project Link: [https://github.com/ikolokotronis/custom-movie-library](https://github.com/ikolokotronis/custom-movie-library)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
