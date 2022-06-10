@@ -37,7 +37,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Your own movie library! Keep your favourite movies or movies that you are interested in all in one place and watch your library grow!
+Your own custom movie library. Keep your favourite movies or movies that you are interested in all in one place.
 
 ### Built With
 
