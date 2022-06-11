@@ -43,6 +43,7 @@ Your own custom movie library. Keep your favourite movies or movies that you are
 
 * [React.js](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
+* [Chakra UI](https://chakra-ui.com/)
 
 
 ## Demo's
