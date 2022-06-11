@@ -4,7 +4,7 @@
 
   <p align="center">
     <br />
-    <a href="#demo">View Demo</a>
+    <a href="#demos">View Demo's</a>
   </p>
 </div>
 
@@ -45,11 +45,9 @@ Your own custom movie library. Keep your favourite movies or movies that you are
 * [Redux](https://redux.js.org/)
 
 
-## Demo
+## Demo's
 
 ![](public/gifs/app-demo.gif)
-
-## Dark mode demo 
 
 ![](public/gifs/dark-mode-demo.gif)
 
