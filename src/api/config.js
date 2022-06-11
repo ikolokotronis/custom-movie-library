@@ -1,3 +1,1 @@
-import {KEY} from "./api_key";
-
-export const API_KEY = KEY;
+export const API_KEY = 'KEY_HERE';
