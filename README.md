@@ -90,10 +90,9 @@ Ioannis Kolokotronis - ioanniskolokotronis1@gmail.com
 
 Project Link: [https://github.com/ikolokotronis/custom-movie-library](https://github.com/ikolokotronis/custom-movie-library)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
+<p align="right">(<a href="#top">back to top</a>)</p>
