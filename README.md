@@ -4,7 +4,7 @@
 
   <p align="center">
     <br />
-    <a href="#demos">View Demo's</a>
+    <a href="#demos">View Demos</a>
   </p>
 </div>
 
@@ -46,7 +46,7 @@ Your own custom movie library. Keep your favourite movies or movies that you are
 * [Chakra UI](https://chakra-ui.com/)
 
 
-## Demo's
+## Demos
 
 ![](public/gifs/app-demo.gif)
 
